@@ -34,6 +34,10 @@ ColorTrigger - is a C++ utility program that allows you to trigger actions based
 
 This program is intended for educational and experimental purposes. Be aware of the legal and ethical considerations when using automation tools in any software or game. Use responsibly and at your own risk.
 
+## Example of showing work
+
+https://github.com/DeftSolutions-dev/ColorTriggerCPP/assets/59990384/f4ce2564-5b09-4939-bb21-b4c7dc53f177
+
 ## Author
 
 - DesirePro
