@@ -9,7 +9,7 @@ ColorTrigger - is a C++ utility program that allows you to trigger actions based
 
 1. **Threshold Setting**: When you run the program, it will prompt you to enter a threshold value (from 4 to 20). This threshold represents the maximum allowed difference in color values between two consecutive pixel checks for a change to be detected. Higher values allow for more color variation before triggering an action.
 
-2. **Bind Selection**: After setting the threshold, you'll be prompted to select a bind (X, F, LALT, Mouse3, Mouse4). This bind determines the key or mouse button that, when pressed, triggers the color change detection.
+2. **Bind Selection**: After setting the threshold, you'll be prompted to select a bind (X, F, LALT, Mouse4, Mouse5). This bind determines the key or mouse button that, when pressed, triggers the color change detection.
 
 3. **Running the Program**: Once configured, the program will continuously monitor for the specified key or mouse button press. When the trigger key/button is activated, the program will compare the color of the pixel at the cursor's position before and after the key/button press.
 
@@ -22,13 +22,12 @@ ColorTrigger - is a C++ utility program that allows you to trigger actions based
 - **X**: Hold down the "X" key to trigger color change detection.
 - **F**: Hold down the "F" key to trigger color change detection.
 - **LALT**: Hold down the left Alt key (LALT) to trigger color change detection.
-- **Mouse3**: Hold down the middle mouse button (Mouse3) to trigger color change detection.
-- **Mouse4**: Hold down the fourth mouse button (Mouse4) to trigger color change detection.
+- **Mouse4**: Hold down the middle mouse button (Mouse4) to trigger color change detection.
+- **Mouse5**: Hold down the fourth mouse button (Mouse5) to trigger color change detection.
 
 ## Dependencies
 
 - The program uses the Windows API functions for keyboard and mouse input monitoring.
-- It utilizes GDI+ for capturing the pixel color at the cursor's position.
 
 ## Disclaimer
 
