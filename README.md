@@ -27,7 +27,7 @@ ColorTrigger - is a C++ utility program that allows you to trigger actions based
 
 ## Dependencies
 
-- The program uses the Windows API functions for keyboard and mouse input monitoring.
+- The program uses the Windows API functions for keyboard and mouse input monitoring and color pixel.
 
 ## Disclaimer
 
