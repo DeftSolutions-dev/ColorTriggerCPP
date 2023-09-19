@@ -23,7 +23,7 @@ void MouseClick() {
     input.type = INPUT_MOUSE;
     input.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
     SendInput(1, &input, sizeof(INPUT));
-    this_thread::sleep_for(chrono::milliseconds(1));
+    this_thread::sleep_for(chrono::milliseconds(3));
     input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
     SendInput(1, &input, sizeof(INPUT));
 }
@@ -34,7 +34,7 @@ int main() {
         return 1;
     }
     setlocale(LC_ALL, "");
-    SetConsoleTitle(L"https://t.me/devilLucifer69 / DS: desirepro");
+    SetConsoleTitle(L"https://t.me/desirepro / DS: desirepro");
 
     int threshold;
     cout << "Введите значение порога (от 4 до 20): ";
