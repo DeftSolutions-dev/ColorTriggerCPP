@@ -1,7 +1,7 @@
 # Color Trigger - C++
 
 [![GitHub](https://img.shields.io/badge/GitHub-DeftSolutions--dev-blue)](https://github.com/DeftSolutions-dev)
-[![Telegram](https://img.shields.io/badge/Telegram-devilLucifer69-blue)](https://t.me/devilLucifer69)
+[![Telegram](https://img.shields.io/badge/Telegram-desirepro-blue)](https://t.me/desirepro)
 
 ColorTrigger - is a C++ utility program that allows you to trigger actions based on color changes at the cursor's position. It can be useful for automating tasks or interactions in applications or games where color changes signify specific events.
 
