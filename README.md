@@ -9,13 +9,15 @@ ColorTrigger - is a C++ utility program that allows you to trigger actions based
 
 1. **Threshold Setting**: When you run the program, it will prompt you to enter a threshold value (from 4 to 20). This threshold represents the maximum allowed difference in color values between two consecutive pixel checks for a change to be detected. Higher values allow for more color variation before triggering an action.
 
-2. **Bind Selection**: After setting the threshold, you'll be prompted to select a bind (X, F, LALT, Mouse4, Mouse5). This bind determines the key or mouse button that, when pressed, triggers the color change detection.
+2. **Milliseconds Setting**: When you start the program, it will prompt you to enter the click milliseconds value (from 1 to 100). This value represents the speed at which the mouse button is pressed when the pixel changes. If you use AVP, SSG in cs go, I recommend from 5 to 8. It all depends on your game and what is convenient for you.
 
-3. **Running the Program**: Once configured, the program will continuously monitor for the specified key or mouse button press. When the trigger key/button is activated, the program will compare the color of the pixel at the cursor's position before and after the key/button press.
+3. **Bind Selection**: After setting the threshold, you'll be prompted to select a bind (X, F, LALT, Mouse4, Mouse5). This bind determines the key or mouse button that, when pressed, triggers the color change detection.
 
-4. **Color Change Detection**: If the color difference between the two pixels exceeds the threshold, the program will perform an action (left mouse button click). This can be customized to perform other actions as needed.
+4. **Running the Program**: Once configured, the program will continuously monitor for the specified key or mouse button press. When the trigger key/button is activated, the program will compare the color of the pixel at the cursor's position before and after the key/button press.
 
-5. **Threshold Adjustment**: You can adjust the threshold during runtime using the "Up" and "Down" arrow keys. Increasing the threshold makes color changes less sensitive, while decreasing it makes them more sensitive.
+5. **Color Change Detection**: If the color difference between the two pixels exceeds the threshold, the program will perform an action (left mouse button click). This can be customized to perform other actions as needed.
+
+6. **Threshold Adjustment**: You can adjust the threshold during runtime using the "Up" and "Down" arrow keys. Increasing the threshold makes color changes less sensitive, while decreasing it makes them more sensitive.
 
 ## Example Key Binds
 
