@@ -17,15 +17,21 @@ COLORREF GetPixelColor(int x, int y) {
     return colorRef;
 }
 
-void MouseClick() {
-    INPUT input = { 0 };
-    //this_thread::sleep_for(chrono::milliseconds(10)); //Для того, что бы не было мгновенного клика.
+void MouseClick(int ms) {
+    INPUT input;
     input.type = INPUT_MOUSE;
+    input.mi.time = 0;
+    input.mi.dwExtraInfo = 0;
+    this_thread::sleep_for(chrono::milliseconds(ms));
     input.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
-    SendInput(1, &input, sizeof(INPUT));
-    this_thread::sleep_for(chrono::milliseconds(3));
+    if (SendInput(1, &input, sizeof(INPUT)) == 0) {
+        cerr << "Ошибка при отправке события нажатия мыши: " << GetLastError() << endl;
+    }
+    this_thread::sleep_for(chrono::milliseconds(1));
     input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
-    SendInput(1, &input, sizeof(INPUT));
+    if (SendInput(1, &input, sizeof(INPUT)) == 0) {
+        cerr << "Ошибка при отправке события отпускания мыши: " << GetLastError() << endl;
+    }
 }
 
 int main() {
@@ -44,11 +50,23 @@ int main() {
         cin >> threshold;
     }
 
+    int ms;
+    cout << "Введите значение клика в миллисекундах (от 0 до 100): ";
+    cin >> ms;
+    while (ms < 0 || ms > 100) {
+        cout << "Некорректное значение клика в миллисекундах. Пожалуйста, введите число от 0 до 100." << endl;
+        cin >> ms;
+    }
+
     cout << "Выберите бинд (X, F, LALT, Mouse4, Mouse5): ";
     string selectedBind;
     cin >> selectedBind;
+    while (selectedBind != "X" && selectedBind != "F" && selectedBind != "LALT" && selectedBind != "Mouse4" && selectedBind != "Mouse5") {
+        cout << "Некорректный выбор бинда. Пожалуйста, выберите из предложенных биндов(X, F, LALT, Mouse4, Mouse5):" << endl;
+        cin >> selectedBind;
+    }
 
-    cout << "Good! Чтобы скрыть консоль, нажмите на Delete/Insert" << endl;
+    cout << "Успешно, скрыть/вернуть консоль на Insert/Delete!" << endl;
     int bindKey = 0;
     if (selectedBind == "X") {
         bindKey = 'X';
@@ -65,7 +83,6 @@ int main() {
     else if (selectedBind == "Mouse5") {
         bindKey = VK_XBUTTON2;
     }
-
     while (true) {
         if (IsKeyPressed(VK_UP) && threshold < 20) {
             cout << "Порог увеличен до " << ++threshold << endl;
@@ -103,7 +120,7 @@ int main() {
             if (abs(r1 - r2) > threshold || abs(g1 - g2) > threshold || abs(b1 - b2) > threshold) {
                 cout << "с RGB:(" << static_cast<int>(r1) << ", " << static_cast<int>(g1) << ", " << static_cast<int>(b1) << ") на ";
                 cout << "RGB(" << static_cast<int>(r2) << ", " << static_cast<int>(g2) << ", " << static_cast<int>(b2) << "). Произведён клик!" << endl;
-                MouseClick();
+                MouseClick(ms);
             }
         }
     }
