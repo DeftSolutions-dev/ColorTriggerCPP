@@ -9,7 +9,7 @@ ColorTrigger - is a C++ utility program that allows you to trigger actions based
 
 1. **Threshold Setting**: When you run the program, it will prompt you to enter a threshold value (from 4 to 20). This threshold represents the maximum allowed difference in color values between two consecutive pixel checks for a change to be detected. Higher values allow for more color variation before triggering an action.
 
-2. **Milliseconds Setting**: When you start the program, it will prompt you to enter the click milliseconds value (from 1 to 100). This value represents the speed at which the mouse button is pressed when the pixel changes. If you use AVP, SSG in cs go, I recommend from 5 to 8. It all depends on your game and what is convenient for you.
+2. **Milliseconds Setting**: When you start the program, it will prompt you to enter the click milliseconds value (from 1 to 100). This value represents the speed at which the mouse button is pressed when the pixel changes. If you use AWP, SSG in cs go, I recommend from 5 to 8. It all depends on your game and what is convenient for you.
 
 3. **Bind Selection**: After setting the threshold, you'll be prompted to select a bind (X, F, LALT, Mouse4, Mouse5). This bind determines the key or mouse button that, when pressed, triggers the color change detection.
 
