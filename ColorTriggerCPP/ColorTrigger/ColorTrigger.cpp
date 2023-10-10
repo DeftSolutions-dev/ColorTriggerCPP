@@ -10,7 +10,23 @@ bool IsKeyPressed(int vKey) {
     return GetAsyncKeyState(vKey) < 0;
 }
 
-COLORREF GetPixelColor(int x, int y) {
+COLORREF GetPixelColorFromCenterWithOffset(int xOffset, int yOffset) {
+    HWND hDesktop = GetDesktopWindow();
+    HDC hScreenDC = GetDC(hDesktop);
+
+    int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+    int screenHeight = GetSystemMetrics(SM_CYSCREEN);
+
+    int centerX = screenWidth / 2 + xOffset;
+    int centerY = screenHeight / 2 + yOffset;
+    
+    COLORREF colorRef = GetPixel(hScreenDC, centerX, centerY);
+
+    ReleaseDC(hDesktop, hScreenDC);
+    return colorRef;
+}
+
+COLORREF GetPixelColorFromCursor(int x, int y) {
     HDC hScreenDC = GetDC(NULL);
     COLORREF colorRef = GetPixel(hScreenDC, x, y);
     ReleaseDC(NULL, hScreenDC);
@@ -66,6 +82,14 @@ int main() {
         cin >> selectedBind;
     }
 
+    cout << "Выберите источник цвета (cursor или center): ";
+    string colorSource;
+    cin >> colorSource;
+    while (colorSource != "cursor" && colorSource != "center") {
+        cout << "Некорректный источник цвета. Пожалуйста, выберите 'cursor' или 'center':" << endl;
+        cin >> colorSource;
+    }
+
     cout << "Успешно, скрыть/вернуть консоль на Insert/Delete!" << endl;
     int bindKey = 0;
     if (selectedBind == "X") {
@@ -98,16 +122,25 @@ int main() {
             Sleep(200);
         }
         if (IsKeyPressed(bindKey)) {
-            POINT p;
-            GetCursorPos(&p);
-            int x = p.x + 2;
-            int y = p.y + 2;
-            COLORREF color1 = GetPixelColor(x, y);
+            COLORREF color1;
+            if (colorSource == "cursor") {
+                POINT cursorPos;
+                GetCursorPos(&cursorPos);
+                color1 = GetPixelColorFromCursor(cursorPos.x + 2, cursorPos.y + 2);
+            }
+            else {
+                color1 = GetPixelColorFromCenterWithOffset(2, 2);
+            }
 
-            GetCursorPos(&p);
-            x = p.x + 2;
-            y = p.y + 2;
-            COLORREF color2 = GetPixelColor(x, y);
+            COLORREF color2;
+            if (colorSource == "cursor") {
+                POINT cursorPos;
+                GetCursorPos(&cursorPos);
+                color2 = GetPixelColorFromCursor(cursorPos.x + 2, cursorPos.y + 2);
+            }
+            else {
+                color2 = GetPixelColorFromCenterWithOffset(2, 2);
+            }
 
             BYTE r1 = GetRValue(color1);
             BYTE g1 = GetGValue(color1);
